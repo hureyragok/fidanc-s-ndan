@@ -1,0 +1,190 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{product.title}} {% endblock %}
+{% block keywords %} {{product.keyword}} {% endblock %}
+{% block description %} {{product.description}} {% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block content %}
+
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="#">Ana Sayfa</a></li>
+				<li><a href="#">Ürünler</a></li>
+				<li><a href="#">{{product.category}}</a></li>
+				<li class="active">{{product.title}}</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /BREADCRUMB -->
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!--  Product Details -->
+				<div class="product product-details clearfix">
+					<div class="col-md-6">
+						<div id="product-main-view">
+
+							<div class="product-view">
+								<img src="{{ product.image.url }}" alt="">
+							</div>
+
+							<div class="product-view">
+								<img src="./img/main-product02.jpg" alt="">
+							</div>
+							<div class="product-view">
+								<img src="./img/main-product03.jpg" alt="">
+							</div>
+							<div class="product-view">
+								<img src="./img/main-product04.jpg" alt="">
+							</div>
+						</div>
+						<div id="product-view">
+							<div class="product-view">
+								<img src="{{ product.image.url }}" alt="">
+							</div>
+							<div class="product-view">
+								<img src="./img/thumb-product02.jpg" alt="">
+							</div>
+							<div class="product-view">
+								<img src="./img/thumb-product03.jpg" alt="">
+							</div>
+							<div class="product-view">
+								<img src="./img/thumb-product04.jpg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="product-body">
+							<div class="product-label">
+								<span>Yeni</span>
+								<span class="sale">-20%</span>
+							</div>
+							<h2 class="product-name">{{ product.title }}</h2>
+							<h3 class="product-price">{{ product.price }}₺<del class="product-old-price"></del></h3>
+							<div>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o empty"></i>
+								</div>
+								<a href="#">1 Yorum(lar) / Yorum Ekle</a>
+							</div>
+							<p><strong>Durumu:</strong> Stokta</p>
+							<p><strong>Satıcı:</strong> Fidancısından.com</p>
+
+							<p>{{ product.description }}</p>
+
+
+
+							<div class="product-btns">
+								<div class="qty-input">
+									<span class="text-uppercase">Adet: </span>
+									<input class="input" type="number" min="0" max="{{ product.amount }}" value="1">
+								</div>
+								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+								<div class="pull-right">
+									<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+									<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+									<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="product-tab">
+							<ul class="tab-nav">
+								<li class="active"><a data-toggle="tab" href="#tab1">Ürün Detay</a></li>
+								<li><a data-toggle="tab" href="#tab2">Yorumlar (1)</a></li>
+							</ul>
+							<div class="tab-content">
+								<div id="tab1" class="tab-pane fade in active">
+									<p>{{ product.detail|safe }}</p>
+								</div>
+								<div id="tab2" class="tab-pane fade in">
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="product-reviews">
+												<div class="single-review">
+													<div class="review-heading">
+														<div><a href="#"><i class="fa fa-user-o"></i> Hümeyra</a></div>
+														<div><a href="#"><i class="fa fa-clock-o"></i> 16 HAZ 2020 / 15:40</a></div>
+														<div class="review-rating pull-right">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o empty"></i>
+														</div>
+													</div>
+													<div class="review-body">
+														<p>Çok beğendim, herkese tavsiye ederim.</p>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+										<div class="col-md-6">
+											<h4 class="text-uppercase">Yorum Yazın</h4>
+
+											<form class="review-form">
+												<div class="form-group">
+													<input class="input" type="text" placeholder="Adınız" />
+												</div>
+												<div class="form-group">
+													<input class="input" type="email" placeholder="E-mail Adresiniz" />
+												</div>
+												<div class="form-group">
+													<textarea class="input" placeholder="Yorumunuz"></textarea>
+												</div>
+												<div class="form-group">
+													<div class="input-rating">
+														<strong class="text-uppercase">Puanım: </strong>
+														<div class="stars">
+															<input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+															<input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+															<input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+															<input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+															<input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+														</div>
+													</div>
+												</div>
+												<button class="primary-btn">Gönder</button>
+											</form>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /Product Details -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}

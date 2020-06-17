@@ -1,0 +1,73 @@
+{% extends "homebase.html" %}
+
+{% block title %} Giriş Yap {{setting.title}} {% endblock %}
+{% block keywords %} {{setting.keyword}} {% endblock %}
+{% block description %} {{setting.description}} {% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+	<div id="breadcrumb">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="/">Ana Sayfa</a></li>
+				<li class="active">Giriş Yap</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /BREADCRUMB -->
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+
+				<div class="col-md-7">
+					<div class="billing details">
+
+						<div class="section-title">
+							<h3 class="title">Kullanıcı Girişi</h3>
+						</div>
+
+						{% if messages %}
+							{% for message in messages %}
+								<div class="alert alert-{{message.tage}}" role="alert">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endif %}
+
+						<form action="" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<input class="input" type="text" name="username" placeholder="Kullanıcı Adı">
+							</div>
+							<div class="form-group">
+								<input class="input" type="password" name="password" placeholder="Şifre">
+							</div>
+							<input type="submit" value="GİRİŞ YAP">
+						</form>
+
+					</div>
+
+				</div>
+
+
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}
